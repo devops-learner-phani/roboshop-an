@@ -13,8 +13,7 @@
   args:
     chdir: "{{ APP_LOCATION }}"
 
-#
-#- name: Include common role from systemd
-#  ansible.builtin.include_role:
-#    name: common
-#    tasks_from: systemd
+- name: Include common role from systemd
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd
