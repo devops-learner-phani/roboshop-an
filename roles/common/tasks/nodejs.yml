@@ -14,14 +14,11 @@
 - name: Install nodejs dependencies
   community.general.npm:
     path: "{{ APP_LOCATION }}"
-#$ npm install
 
-#1. Update SystemD file with correct IP addresses
-#
-#Update `MONGO_DNSNAME` with MongoDB Server IP
+- name: Include common role from systemd
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd
 
 
-  # mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-  # systemctl daemon-reload
-  # systemctl start catalogue
-  # systemctl enable catalogue
+
