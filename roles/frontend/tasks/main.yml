@@ -1,0 +1,20 @@
+- name: Install nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+- name: Include common role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+
+
+
+
+
+
+
+  # mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
+    # systemctl enable nginx
+    # systemctl restart nginx

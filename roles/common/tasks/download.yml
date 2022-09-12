@@ -1,0 +1,19 @@
+- name: Download {{ COMPONENT }} content
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/{{ COMPONENT }}.zip
+    remote_src: yes
+
+#- name: Remove app location
+#  ansible.builtin.file:
+#    path: "{{ APP_LOCATION }}"
+#    state: absent
+#
+#- name: add app location
+#  ansible.builtin.file:
+#    path: "{{ APP_LOCATION }}"
+#    state: directory
+
+
+# unzip /tmp/frontend.zip
+# mv frontend-main/static/* .
