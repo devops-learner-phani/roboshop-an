@@ -6,10 +6,10 @@
     name: nodejs
     state: installed
 
-#- name: Include common role
-#  ansible.builtin.include_role:
-#    name: common
-#    tasks_from: download
+- name: Include common role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
 
 
 #$ npm install
