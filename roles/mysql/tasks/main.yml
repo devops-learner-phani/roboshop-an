@@ -19,15 +19,15 @@
     state: started
     enabled: yes
 
-#- name: Read the mysql content
-#  ansible.builtin.slurp:
-#    src: /var/log/mysqld.log
-#  register: mysql_log
+- name: Read the mysql content
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: mysql_log
 
-#- name: Print mysql DEFAULT_PASSWORD
-#  ansible.builtin.set_fact:
-#    DEFAULT_PASSWORD: "{{ mysql_log['content'] | b64decode | regex_search('.*temporary password.*') | split(' ') | last }}"
-#
+- name: Print mysql DEFAULT_PASSWORD
+  ansible.builtin.set_fact:
+    DEFAULT_PASSWORD: "{{ mysql_log['content'] | b64decode | regex_search('.*temporary password.*') | split(' ') | last }}"
+
 #- name: Check MYSQL_PASSWORD rest or not
 #  community.mysql.mysql_info:
 #    login_user: root
