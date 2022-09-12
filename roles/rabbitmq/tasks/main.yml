@@ -19,7 +19,7 @@
     state: started
     enabled: yes
 
-- name: Update
+- name: Create roboshop user
   community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: "{{RABBITMQ_USER_PASSWORD}}"
