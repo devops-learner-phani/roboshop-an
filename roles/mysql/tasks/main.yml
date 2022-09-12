@@ -41,16 +41,16 @@
 - name: Reset MYSQL_PASSWORD
   ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{MYSQL_PASSWORD}}';" | mysql --connect-expired-password  -uroot -p"{{DEFAULT_PASSWORD}}"
   when: mysql_conn is failed
-#
-#- name: check mysql validate_password plugin
-#  ansible.builtin.shell: echo show plugins | mysql -uroot -p"{{MYSQL_PASSWORD}}" | grep validate_password
-#  register: plugin_info
-#  ignore_errors: yes
-#
-#- name: remove mysql validate_password plugin
-#  ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -p"{{MYSQL_PASSWORD}}"
-#  when: plugin_info is succeeded
-#
+
+- name: check mysql validate_password plugin
+  ansible.builtin.shell: echo show plugins | mysql -uroot -p"{{MYSQL_PASSWORD}}" | grep validate_password
+  register: plugin_info
+  ignore_errors: yes
+
+- name: remove mysql validate_password plugin
+  ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -p"{{MYSQL_PASSWORD}}"
+  when: plugin_info is succeeded
+
 #- name: Download and Extract {{ COMPONENT }} content
 #  ansible.builtin.unarchive:
 #    src: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
