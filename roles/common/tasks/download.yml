@@ -16,5 +16,5 @@
 
 - name: copy {{ COMPONENT }}
   ansible.builtin.copy:
-    src: {{ COMPONENT }}-main/{{SUFFIX}}
+    src: /tmp/{{ COMPONENT }}-main/{{SUFFIX}}
     dest: "{{ APP_LOCATION }}/"
