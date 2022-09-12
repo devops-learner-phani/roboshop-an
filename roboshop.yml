@@ -1,4 +1,5 @@
 - name: Create Roboshop project
   hosts: "{{HOST}}"
+  become: yes
   roles:
     - "{{ROLE}}"
