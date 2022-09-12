@@ -1,0 +1,23 @@
+- name: Install maven
+  ansible.builtin.yum:
+    name: maven
+    state: installed
+
+- name: Include common role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+
+
+
+#$ cd shipping
+#$ mvn clean package
+#$ mv target/shipping-1.0.jar shipping.jar
+#```
+
+
+  # mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
+  # systemctl daemon-reload
+  # systemctl start shipping
+  # systemctl enable shipping
