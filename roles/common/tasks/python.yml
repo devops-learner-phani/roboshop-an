@@ -1,0 +1,36 @@
+- name: Fail if RABBITMQ_USER_PASSWORD does not exist
+  ansible.builtin.fail:
+    msg: RABBITMQ_USER_PASSWORD is missing
+  when: RABBITMQ_USER_PASSWORD is undefined
+
+- name: Install python service
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Include common role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+- name: Install Python dependencies
+  ansible.builtin.pip:
+    requirements: "{{ APP_LOCATION }}/requirements.txt"
+    executable: pip3
+
+- name: Give root permission to the user
+  ansible.builtin.lineinfile:
+    path: /home/roboshop/{{ COMPONENT }}/{{ COMPONENT }}.ini
+    regexp: '^{{item.key}}'
+    line: "{{item.line}}"
+  loop:
+    - {key: "uid" , line: "uid = ${{app_user.uid}}"}
+    - {key: "gid" , line: "gid = ${{app_user.group}}"}
+
+- name: Include common role from systemd
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd
