@@ -27,8 +27,8 @@
     regexp: '^{item.key}'
     line: "{{item.line}}"
   loop:
-    - {key: "uid" , line: "uid = ${{app_user.uid}}"}
-    - {key: "gid" , line: "gid = ${{app_user.group}}"}
+    - {key: "uid" , line: "uid = {{app_user.uid}}"}
+    - {key: "gid" , line: "gid = {{app_user.group}}"}
 
 - name: Include common role from systemd
   ansible.builtin.include_role:
