@@ -14,5 +14,7 @@
     dest: /tmp
     remote_src: yes
 
-# unzip /tmp/frontend.zip
-# mv frontend-main/static/* .
+- name: copy {{ COMPONENT }}
+  ansible.builtin.copy:
+    src: {{ COMPONENT }}-main/{{SUFFIX}}
+    dest: "{{ APP_LOCATION }}/"
