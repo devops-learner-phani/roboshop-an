@@ -24,7 +24,7 @@
 - name: Give root permission to the user
   ansible.builtin.lineinfile:
     path: /home/roboshop/{{ COMPONENT }}/{{ COMPONENT }}.ini
-    regexp: '^{{item.key}}'
+    regexp: '^{item.key}'
     line: "{{item.line}}"
   loop:
     - {key: "uid" , line: "uid = ${{app_user.uid}}"}
