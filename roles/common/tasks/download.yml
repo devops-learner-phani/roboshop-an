@@ -32,7 +32,7 @@
 
 - name: Declare url fact for latest version
   ansible.builtin.set_fact:
-    URL: "{{out.stout}}"
+    URL: "{{out.stdout}}"
   when: APP_VERSION is not defined
 
 - name: Declare url fact
