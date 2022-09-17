@@ -11,7 +11,7 @@ if [ -z "${1}" ]; then
   ENV=""
 else
   ENV="-$1"
-  
+fi
 COMPONENT=all
 create_ec2() {
   PRIVATE_IP=$(aws ec2 run-instances \
