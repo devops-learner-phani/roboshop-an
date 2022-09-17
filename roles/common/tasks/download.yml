@@ -25,7 +25,7 @@
 #    dest: "{{ APP_LOCATION }}/"
 #    remote_src: yes
 
-- name: Download and Extract {{ COMPONENT }} content
+- name: Download and Extract {{ COMPONENT }} content from nexus
   ansible.builtin.unarchive:
     src: http://100.27.16.238:8081/repository/{{ COMPONENT }}/{{ COMPONENT }}-{{APP_VERSION}}.zip
     dest: "{{ APP_LOCATION }}"
