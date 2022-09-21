@@ -7,7 +7,7 @@ IAM_INSTANCE_PROFILE="Arn=arn:aws:iam::645019601948:instance-profile/role-for-aw
 #############################
 
 
-if [ -z "${1}" ]; then
+if [ -z "${1}" ] ; then
   ENV=""
 else
   ENV="-$1"
