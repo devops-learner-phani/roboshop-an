@@ -25,7 +25,7 @@
 #    dest: "{{ APP_LOCATION }}/"
 #    remote_src: yes
 
-- name: Get the latest version of nexus artifact of {{ COMPONENT }} component
+- name: Get the latest version of nexus artifact
   ansible.builtin.shell:  curl -s http://nexus.roboshop.internal:8081/service/rest/repository/browse/{{ COMPONENT }}/ | grep zip | grep {{ENV}}-{{ COMPONENT }} | sed -e 's/"/ /g' | xargs -n1 | grep ^http
   register: out
   when: APP_VERSION is not defined
