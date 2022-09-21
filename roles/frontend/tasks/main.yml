@@ -8,15 +8,20 @@
     name: common
     tasks_from: download
 
-- name: Update systemd config
+#- name: Update systemd config
+#  ansible.builtin.template:
+#    src: localhost.conf
+#    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Copy Nginx Configuration
   ansible.builtin.template:
-    src: localhost.conf
-    dest: /etc/nginx/default.d/roboshop.conf
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
 - name: Start nginx service
   ansible.builtin.systemd:
     name: nginx
-    state: started
+    state: restarted
     enabled: yes
 
 
