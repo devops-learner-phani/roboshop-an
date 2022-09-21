@@ -10,7 +10,7 @@
 
 - name: Update systemd config
   ansible.builtin.template:
-    src: localhost.conf
+    src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 
